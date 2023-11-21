@@ -1,0 +1,10 @@
+{
+    "files.exclude": {
+        "out/": true,
+        "**/*.js.map": true,
+        "**/node_modules": true
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
+}

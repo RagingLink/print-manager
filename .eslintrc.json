@@ -1,0 +1,65 @@
+{
+    "env": {
+        "node": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:import/recommended",
+        "plugin:import/typescript",
+        "plugin:@typescript-eslint/recommended-type-checked",
+        "plugin:require-extensions/recommended"
+    ],
+    "ignorePatterns": [
+        "out/*"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@stylistic",
+        "@typescript-eslint",
+        "import",
+        "simple-import-sort",
+        "require-extensions"
+    ],
+    "root": true,
+    "parserOptions": {
+        "project": true,
+        "tsconfigRootDir": "./"
+    },
+    "rules": {
+        "import/no-unresolved": "error",
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error",
+        "quotes": [
+            "error",
+            "single",
+            {
+                "avoidEscape": false
+            }
+        ],
+        "semi": [
+            2,
+            "always"
+        ],
+        "@stylistic/no-mixed-spaces-and-tabs": 2,
+        "@stylistic/no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1
+            }
+        ],
+        "@stylistic/lines-between-class-members": 2
+    },
+    "settings": {
+        "import/parsers": {
+            "@typescript-eslint/parser": [
+                ".ts",
+                ".tsx"
+            ]
+        },
+        "import/resolver": {
+            "typescript": {
+                "alwaysTryTypes": true // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+            }
+        }
+    }
+}
