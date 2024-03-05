@@ -2,6 +2,7 @@ import { port, str} from 'envalid';
 
 export default {
     PORT: port(),
+    HOST: str(),
     AUTH_KEY: str(),
     TAPO_EMAIL: str(),
     TAPO_PASSWORD: str(),

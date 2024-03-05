@@ -22,7 +22,7 @@ async function startServer() {
     await server.register((fastify, opts, done) => powerRoute.registerPlugin(fastify, opts, done), { prefix: '/power' });
     await server.register((fastify, opts, done) => timelapseRoute.registerPlugin(fastify, opts, done), { prefix: '/timelapse' });
 
-    await server.listen({ port: env.PORT }).then(() => {
+    await server.listen({ port: env.PORT, host: env.HOST }).then(() => {
         console.log('Listening on port ' + env.PORT);
     });
 }
