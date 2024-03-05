@@ -1,4 +1,5 @@
 {
+    "root": true,
     "env": {
         "node": true
     },
@@ -9,9 +10,6 @@
         "plugin:@typescript-eslint/recommended-type-checked",
         "plugin:require-extensions/recommended"
     ],
-    "ignorePatterns": [
-        "out/*"
-    ],
     "parser": "@typescript-eslint/parser",
     "plugins": [
         "@stylistic",
@@ -20,10 +18,25 @@
         "simple-import-sort",
         "require-extensions"
     ],
-    "root": true,
     "parserOptions": {
         "project": true,
         "tsconfigRootDir": "./"
+    },
+    "ignorePatterns": [
+        "out/*"
+    ],
+    "settings": {
+        "import/parsers": {
+            "@typescript-eslint/parser": [
+                ".ts",
+                ".tsx"
+            ]
+        },
+        "import/resolver": {
+            "typescript": {
+                "alwaysTryTypes": true // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+            }
+        }
     },
     "rules": {
         "import/no-unresolved": "error",
@@ -46,20 +59,17 @@
             {
                 "max": 1
             }
-        ],
-        "@stylistic/lines-between-class-members": 2
+        ]//,
+        
+        //"@stylistic/lines-between-class-members": 2
     },
-    "settings": {
-        "import/parsers": {
-            "@typescript-eslint/parser": [
-                ".ts",
-                ".tsx"
-            ]
-        },
-        "import/resolver": {
-            "typescript": {
-                "alwaysTryTypes": true // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
-            }
+    "overrides": [
+        {
+          // enable the rule specifically for TypeScript files
+          "files": ["*.ts", "*.mts", "*.cts", "*.tsx"],
+          "rules": {
+            "@typescript-eslint/explicit-member-accessibility": "error"
+          }
         }
-    }
+      ]
 }

@@ -6,5 +6,5 @@ export default {
     TAPO_EMAIL: str(),
     TAPO_PASSWORD: str(),
     TAPO_IP: str(),
-    WEBCAM_HOST: str()
+    WEBCAM_SNAPSHOT_URL: str()
 };
