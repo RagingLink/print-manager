@@ -5,14 +5,14 @@ import Commander from '../managers/Commander.js';
 import { PowerRouteBodySchema } from './Schemas.js';
 
 export default class PowerRoute {
-    public constructor(public readonly commander: Commander) {
-    }
+    public constructor(public readonly commander: Commander) { }
 
     public registerPlugin (fastify: FastifyInstance, _opts: FastifyPluginOptions, done: () => void) {
         const tapoPlug = this.commander.tapoPlug;
-        fastify.get('/', () => tapoPlug.getState());
+        // #region State
+        fastify.get('/state', () => tapoPlug.getState());
 
-        fastify.withTypeProvider<TypeBoxTypeProvider>().put('/', {
+        fastify.withTypeProvider<TypeBoxTypeProvider>().put('/state', {
             schema: {
                 body: PowerRouteBodySchema
             }
@@ -26,6 +26,11 @@ export default class PowerRoute {
                 default:
                     return reply.code(400).send({ error: 'Invalid power mode' });
             }
+        });
+        // #endregion
+        fastify.get('/energy', async () => { 
+            const usage = await tapoPlug.getEnergyUsage();
+            return usage;
         });
         done();
     }

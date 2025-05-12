@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint .",
     "build": "tsc --build",
+    "watch": "tsc --build --watch",
     "clean": "rm -rf out/",
     "rebuild": "yarn run clean && yarn run build",
     "start": "node out/index.js"
@@ -21,12 +22,14 @@
     "envalid": "^8.0.0",
     "fastify": "^4.24.3",
     "fluent-ffmpeg": "^2.1.2",
+    "mqtt": "^5.13.0",
     "tp-link-tapo-connect": "^2.0.4"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin": "^1.4.0",
     "@types/fluent-ffmpeg": "^2.1.24",
     "@types/node": "^20.9.2",
+    "@types/ws": "^8.18.1",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.11.0",
     "eslint": "^8.54.0",
@@ -38,5 +41,6 @@
     "typescript": "^5.2.2"
   },
   "type": "module",
-  "author": "RagingLink <nicelink.brian@gmail.com>"
+  "author": "RagingLink <nicelink.brian@gmail.com>",
+  "packageManager": "yarn@1.22.19"
 }
